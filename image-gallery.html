@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC" type="text/css">
+    <title>Monuments Image Gallery</title>
+    <style>
+        html {
+            box-sizing: border-box;
+            background: #ffc600;
+            font-family: "helvetica neue";
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        body {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .panels {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .panel {
+            background: #6b0f9c;
+            box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+            color: white;
+            /* transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11);
+            transition: flex 0.07s cubic-bezier(0.61, -0.19, 0.7, -0.11);
+            transition: background 0.2s; */
+            transition: 2s;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            /* border: 1px solid red; */
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel1 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/wallOfChina.jpg");
+        }
+
+        .panel2 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/chichenMexico.jpg");
+        }
+
+        .panel3 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/petraJordan.jpeg");
+        }
+
+        .panel4 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/machuPicchu.jpg");
+        }
+
+        .panel5 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/redeemerRio.jpg");
+        }
+
+        .panel6 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/tajMahal.jpg");
+        }
+
+        .panel7 {
+            background-image: url("/Users/frontenduser/Desktop/Practice/Javascript/Image_Gallery/colosseumItaly.jpg");
+        }
+
+        .panel>* {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            /* border: 1px solid red; */
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel p {
+            text-transform: uppercase;
+            font-family: 'Amatic SC', cursive;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+            font-size: 2em;
+        }
+
+        .panel p:nth-child(2) {
+            font-size: 2em;
+        }
+
+        .panel.open {
+            flex: 20;
+            font-size: 24px;
+        }
+
+        .cta {
+            color: white;
+            text-decoration: none;
+        }
+
+        .panel>*:first-child {
+            display: none;
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: 1s;
+        }
+
+        .panel>*:last-child {
+            display: none;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: 1s;
+        }
+
+        .panel.open-active>*:first-child {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel.open-active>*:last-child {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>1</p>
+            <p>The Great Wall of China</p>
+        </div>
+        <div class="panel panel2">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>2</p>
+            <p>Chichen Itza - Mexico</p>
+        </div>
+        <div class="panel panel3">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>3</p>
+            <p>Petra Jordan</p>
+        </div>
+        <div class="panel panel4">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>4</p>
+            <p>Machu Picchu - Peru</p>
+        </div>
+        <div class="panel panel5">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>5</p>
+            <p>Christ the Redeemer - Brazil</p>
+        </div>
+        <div class="panel panel6">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>6</p>
+            <p>Taj Mahal - India</p>
+        </div>
+        <div class="panel panel7">
+            <p>The Seven Wonders Of The World
+            </p>
+            <p>7</p>
+            <p>Colosseum - Italy</p>
+        </div>
+    </div>
+
+
+    <script>
+        // var abc = false;
+        // console.log(abc);
+        // window.onload(function () {
+        //     console.log('dfg');
+        // })
+
+        // window.onload = function () {
+        //     console.log('Naveen sexy')
+        // };
+
+
+
+        const panels = document.querySelectorAll('.panel');
+
+        function addOpen() {
+            this.classList.add('open');
+            // setTimeout(function () {
+            this.classList.add('open-active');
+            // }, 500);
+        }
+
+        function removeOpen() {
+            this.classList.remove('open');
+            // setTimeout(function () {
+            this.classList.remove('open-active');
+            // }, 500);
+
+        }
+
+        // function toggleOpenActive(e) {
+        //     if (e.propertyName.includes('flex')) {
+        //         this.classList.toggle('open-active');
+        //     }
+        // }
+
+
+        panels.forEach((panel) => {
+            panel.addEventListener('mouseover', addOpen);
+            // panel.addEventListener('mouseover', addOpenActive)
+        });
+        panels.forEach((panel) => {
+            panel.addEventListener('mouseout', removeOpen);
+            // panel.addEventListener('mouseout', removeOpenActive)
+        });
+
+        // panels.forEach((panel) => panel.addEventListener('transitionend', toggleOpenActive));
+    </script>
+</body>
+
+</html>
